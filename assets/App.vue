@@ -7,8 +7,7 @@
       v-model="drawer"
     >
       <v-list>
-        <v-list-tile 
-          router
+        <v-list-tile
           :to="item.to"
           :key="i"
           v-for="(item, i) in items"
@@ -24,7 +23,7 @@
     </v-navigation-drawer>
     <v-toolbar fixed>
       <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn 
+      <v-btn
         icon
         @click.native.stop="miniVariant = !miniVariant"
       >

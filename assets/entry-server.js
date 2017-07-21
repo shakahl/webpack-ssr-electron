@@ -1,3 +1,4 @@
+import 'colors'
 import { createApp } from './app'
 
 const isDev = process.env.NODE_ENV !== 'production'
@@ -32,7 +33,7 @@ export default context => {
           route: router.currentRoute
         })
       })).then(() => {
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+        isDev && console.log(`> data pre-fetch: ${Date.now() - s}ms`.green)
         // After all preFetch hooks are resolved, our store is now
         // filled with the state needed to render the app.
         // Expose the state on the render context, and let the request handler

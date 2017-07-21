@@ -1,5 +1,7 @@
+require('colors')
 const fs = require('fs')
 const path = require('path')
+const http = require('http')
 const LRU = require('lru-cache')
 const express = require('express')
 const favicon = require('serve-favicon')
@@ -88,7 +90,7 @@ const microCache = LRU({
 // headers.
 const isCacheable = req => useMicroCache
 
-function render (req, res) {
+function render ({url}, res) {
   const s = Date.now()
 
   res.setHeader("Content-Type", "text/html")
@@ -100,17 +102,17 @@ function render (req, res) {
     } else {
       // Render Error Page or Redirect
       res.status(500).end('500 | Internal Server Error')
-      console.error(`error during render : ${req.url}`)
+      console.error(`error during render : ${url}`)
       console.error(err.stack)
     }
   }
 
-  const cacheable = isCacheable(req)
+  const cacheable = isCacheable(url)
   if (cacheable) {
-    const hit = microCache.get(req.url)
+    const hit = microCache.get(url)
     if (hit) {
       if (!isProd) {
-        console.log(`cache hit!`)
+        console.log(`> cache hit!`.yellow)
       }
       return res.end(hit)
     }
@@ -118,7 +120,7 @@ function render (req, res) {
 
   const context = {
     title: 'Vuetify', // default title
-    url: req.url
+    url
   }
   renderer.renderToString(context, (err, html) => {
     if (err) {
@@ -126,19 +128,107 @@ function render (req, res) {
     }
     res.end(html)
     if (cacheable) {
-      microCache.set(req.url, html)
+      microCache.set(url, html)
     }
     if (!isProd) {
-      console.log(`whole request: ${Date.now() - s}ms`)
+      console.log(`> whole request: ${Date.now() - s}ms`.green)
     }
   })
 }
 
 app.get('*', isProd ? render : (req, res) => {
-  readyPromise.then(() => render(req, res))
+  readyPromise.then(() => {
+    render(req, res)
+  })
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 9200
+const _APP_URL_ = `http://localhost:${port}`
 app.listen(port, '0.0.0.0', () => {
-  console.log(`server started at localhost:${port}`)
+  console.log(`> server started at localhost:${port}`.green)
 })
+
+/*
+ ** Electron app
+ */
+const {BrowserWindow} = require('electron')
+const Electron = require('electron').app
+const url = require('url')
+
+// const menuFile = require(join(__dirname, 'assets', 'menu.js'))
+// const menu = Menu.buildFromTemplate(menuFile.menu)
+
+let win = null // Current window
+
+const POLL_INTERVAL = 300
+const pollServer = () => {
+  http.get(_APP_URL_, ({statusCode}) => {
+    statusCode !== 200
+      ? setTimeout(pollServer, POLL_INTERVAL)
+      : win.loadURL(_APP_URL_)
+  })
+    .on('error', pollServer)
+}
+
+const newWin = () => {
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    titleBarStyle: 'hidden',
+    frame: process.platform === 'darwin',
+    show: false
+  })
+
+  win.once('ready-to-show', () => {
+    win.show()
+  })
+
+  win.on('closed', () => {
+    win = null
+  })
+
+  win.webContents.on('crashed', (event) => {
+    console.error('Main window crashed')
+    console.error('Event is ' + event)
+  })
+
+  win.on('unresponsive', () => {
+    console.warn('Main window is unresponsive...')
+  })
+
+  win.on('session-end', () => {
+    console.info('Session logged off.')
+  })
+
+  if (process.NODE_ENV === 'production') {
+    return win.loadURL(_APP_URL_)
+  } else {
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true
+    }))
+  }
+
+  pollServer()
+}
+
+Electron.on('ready', () => {
+  // Menu.setApplicationMenu(menu)
+
+  newWin()
+
+  process.win = win
+  process.appURL = _APP_URL_
+})
+
+// Quit when all windows are closed.
+Electron.on('window-all-closed', function () {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+Electron.on('activate', () => win === null && newWin())

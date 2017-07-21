@@ -14,7 +14,7 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn primary flat router to="/inspire">Continue</v-btn>
+          <v-btn primary flat to="/inspire">Continue</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
