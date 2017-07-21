@@ -1,9 +1,31 @@
-# Vuetify Webpack SSR Template
+# Vuetify + Electron Webpack SSR Template
 
-> Vuetify SSR Webpack Template
+> Vuetify + Electron SSR Webpack Template
 
 ## Build Setup
 
+Temporary
+
+#### Dev mode
+``` bash
+git clone https://github.com/Kylart/webpack-ssr-electron && cd webpack-ssr-electron
+ 
+npm install
+ 
+npm run dev
+```
+
+#### Production mode
+``` bash
+git clone https://github.com/Kylart/webpack-ssr-electron && cd webpack-ssr-electron
+ 
+npm install
+ 
+npm run build && npm run start
+```
+
+
+Not available yet
 ``` bash
 vue init vuetifyjs/webpack-ssr
 
