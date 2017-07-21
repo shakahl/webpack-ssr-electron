@@ -155,16 +155,12 @@ const {BrowserWindow} = require('electron')
 const Electron = require('electron').app
 const url = require('url')
 
-// const menuFile = require(join(__dirname, 'assets', 'menu.js'))
-// const menu = Menu.buildFromTemplate(menuFile.menu)
-
 let win = null // Current window
 
-const POLL_INTERVAL = 300
 const pollServer = () => {
   http.get(_APP_URL_, ({statusCode}) => {
     statusCode !== 200
-      ? setTimeout(pollServer, POLL_INTERVAL)
+      ? setTimeout(pollServer, 300)
       : win.loadURL(_APP_URL_)
   })
     .on('error', pollServer)
@@ -173,10 +169,7 @@ const pollServer = () => {
 const newWin = () => {
   win = new BrowserWindow({
     width: 800,
-    height: 600,
-    titleBarStyle: 'hidden',
-    frame: process.platform === 'darwin',
-    show: false
+    height: 600
   })
 
   win.once('ready-to-show', () => {
@@ -214,10 +207,9 @@ const newWin = () => {
 }
 
 Electron.on('ready', () => {
-  // Menu.setApplicationMenu(menu)
-
   newWin()
 
+  // Optional, allows to access window from anywhere in the server
   process.win = win
   process.appURL = _APP_URL_
 })
