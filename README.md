@@ -27,7 +27,7 @@ $ npm install # Or yarn install
 $ npm run dev
 ```
 
-Go to [http://localhost:3000](http://localhost:3000)
+Go to [http://localhost:9200](http://localhost:9200)
 
 ### Production
 
