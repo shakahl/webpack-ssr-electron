@@ -1,41 +1,38 @@
-# Vuetify + Electron Webpack SSR Template
+# Starter
 
-> Vuetify + Electron SSR Webpack Template
+> A [Vuetify.js](https://github.com/vuetifyjs/vuetify) starter project template with webpack server side rendering and 
+[electron](https://electron.atom.io).
 
-## Build Setup
+## Installation
 
-Temporary
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
-#### Dev mode
 ``` bash
-git clone https://github.com/Kylart/webpack-ssr-electron && cd webpack-ssr-electron
+$ vue init vuetifyjs/nuxt my-project  
  
-npm install
- 
-npm run dev
+$ cd my-project                
+      
+# install dependencies
+$ npm install # Or yarn install
 ```
 
-#### Production mode
+> Make sure to use a version of vue-cli >= 2.1 (`vue -V`).
+
+## Usage
+
+### Development
+
 ``` bash
-git clone https://github.com/Kylart/webpack-ssr-electron && cd webpack-ssr-electron
- 
-npm install
- 
-npm run build && npm run start
+# serve with hot reloading at localhost:9200
+$ npm run dev
 ```
 
+Go to [http://localhost:3000](http://localhost:3000)
 
-Not available yet
+### Production
+
 ``` bash
-vue init vuetifyjs/webpack-ssr
-
-cd webpack-ssr
-
-# npm
-npm install
-
-# yarn
-yarn
+# build for production and start the app
+$ npm run build
+$ npm start
 ```
-
-For additional information, please visit the [Official Documentation](https://vuetifyjs.com).

@@ -193,7 +193,7 @@ const newWin = () => {
     console.info('Session logged off.')
   })
 
-  if (process.NODE_ENV === 'production') {
+  if (isProd) {
     return win.loadURL(_APP_URL_)
   } else {
     win.loadURL(url.format({
