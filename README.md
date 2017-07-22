@@ -8,7 +8,7 @@
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
-$ vue init vuetifyjs/nuxt my-project  
+$ vue init Kylart/webpack-ssr-electron my-project  
  
 $ cd my-project                
       
