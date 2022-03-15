@@ -40,7 +40,7 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-register": "6.24.1",
     "colors": "1.1.2",
-    "css-loader": "0.28.4",
+    "css-loader": "0.28.11",
     "electron": "11.5.0",
     "eventsource-polyfill": "0.9.6",
     "file-loader": "0.11.2",
