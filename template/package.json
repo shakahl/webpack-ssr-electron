@@ -39,7 +39,7 @@
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-2": "6.24.1",
     "babel-register": "6.26.0",
-    "colors": "1.1.2",
+    "colors": "1.4.0",
     "css-loader": "0.28.11",
     "electron": "11.5.0",
     "eventsource-polyfill": "0.9.6",
