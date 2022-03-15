@@ -15,7 +15,7 @@
     "npm": ">=4.0"
   },
   "dependencies": {
-    "babel-polyfill": "6.23.0",
+    "babel-polyfill": "6.26.0",
     "compression": "1.7.4",
     "cross-env": "5.0.1",
     "es6-promise": "4.1.1",
@@ -33,12 +33,12 @@
   },
   "devDependencies": {
     "autoprefixer": "7.1.2",
-    "babel-core": "6.25.0",
-    "babel-loader": "7.1.1",
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
     "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.6.0",
+    "babel-preset-env": "1.7.0",
     "babel-preset-stage-2": "6.24.1",
-    "babel-register": "6.24.1",
+    "babel-register": "6.26.0",
     "colors": "1.1.2",
     "css-loader": "0.28.11",
     "electron": "11.5.0",
