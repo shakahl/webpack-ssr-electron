@@ -41,7 +41,7 @@
     "babel-register": "6.26.0",
     "colors": "1.4.0",
     "css-loader": "0.28.11",
-    "electron": "11.5.0",
+    "electron": "15.5.5",
     "eventsource-polyfill": "0.9.6",
     "file-loader": "0.11.2",
     "friendly-errors-webpack-plugin": "1.7.0",
