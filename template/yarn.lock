@@ -316,7 +316,7 @@ async-each@^1.0.0:
 
 async@^2.1.2:
   version "2.6.4"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.6.4.tgz#706b7ff6084664cd7eae713f6f965433b5504221"
+  resolved "https://registry.npmjs.org/async/-/async-2.6.4.tgz"
   integrity sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==
   dependencies:
     lodash "^4.17.14"
@@ -3514,7 +3514,7 @@ lodash.uniq@^4.5.0:
 
 lodash@^4.17.10, lodash@^4.17.14, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0:
   version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 longest@^1.0.1:
@@ -6048,10 +6048,10 @@ vue@2.7.0:
     "@vue/compiler-sfc" "2.7.0"
     csstype "^3.1.0"
 
-vuetify@0.14.11:
-  version "0.14.11"
-  resolved "https://registry.npmjs.org/vuetify/-/vuetify-0.14.11.tgz"
-  integrity sha512-FEV8hrqL21nAaTNGlwwuo0p/t8K3s9kiP16sRlz5SESsQaOigqu1eBwce6tXP3cVbysQ7kAo/I9Nw4QeWA/f9w==
+vuetify@0.17.7:
+  version "0.17.7"
+  resolved "https://registry.npmjs.org/vuetify/-/vuetify-0.17.7.tgz"
+  integrity sha512-Brk8dOeR/vkG4By5r2JXtS1jJojP3sFOtyTXtflH7aVPF+14Z0xBNO3nM4QuPgWofHi3pw/9maJZEbDVND7iNQ==
 
 vuex-router-sync@4.3.2:
   version "4.3.2"
